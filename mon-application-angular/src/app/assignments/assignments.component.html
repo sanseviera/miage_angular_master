@@ -1,0 +1,43 @@
+<!-- Toolbar -->
+<div>
+    <mat-toolbar class="head">
+      <mat-toolbar-row> 
+        <img class="logo" src="../assets/UCA-Logo-1niveau-RVB-Blanc.png"/>
+        <div class="div">
+          <p class="text">{{nom}}</p>
+        </div>
+      </mat-toolbar-row>
+    
+      <mat-toolbar-row > 
+        <button mat-icon-button (click)=clicSurBouton() aria-label="Example icon button with a heart icon">
+          <mat-icon class="buttonHead">menu</mat-icon>
+        </button>
+        <a [routerLink]="['/home']">
+        <button mat-icon-button aria-label="Example igkucon button with a heart icon">
+          <mat-icon class="buttonHead">home</mat-icon>
+        </button>
+      </a>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  
+  <!-- Body -->
+  <div>
+  
+    <mat-sidenav-container>
+      <mat-sidenav [opened]="opened"  mode="push">
+        <a [routerLink]="['/jobs-list']"><button mat-button class="buttonSideNav">Liste des devoirs</button></a>
+        <a [routerLink]="['/add-work']"><button mat-button class="buttonSideNav">Ajout d'un devoir</button></a>
+        <a [routerLink]="['/set-jobs']"><button mat-button class="buttonSideNav">Modification d'un devoir</button></a>
+        <a [routerLink]="['/delete-jobs']"><button mat-button class="buttonSideNav">Suppression d'un devoir</button></a>
+        <a [routerLink]="['/test-jobs']"><button mat-button class="buttonSideNav">Génération de données de test</button></a>
+      </mat-sidenav>
+      <mat-sidenav-content >
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>  
+  
+  

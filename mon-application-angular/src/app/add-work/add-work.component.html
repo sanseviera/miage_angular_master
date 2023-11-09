@@ -1,0 +1,48 @@
+
+<form ngForm #formAssignementForm > 
+
+    <mat-form-field appearance="outline" class="form">
+        <mat-label>Fill form field</mat-label>
+        <input matInput 
+               #nomAssignment 
+               placeholder="Nom du devoir" 
+               [(ngModel)]="nomDevoir" 
+               name="jjj">
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <input matInput [matDatepicker]="picker"
+               [(ngModel)]="dateRendu"
+               name="date"
+               placeholder="Date de rendu"
+               [(ngModel)]="dateRendu"
+               name="date"
+        >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+
+    <button mat-button class="button" 
+            (click)="onSubmit($event);formAssignementForm.reset()" 
+            [disabled]="!ajoutActive">
+        Génération de données de test
+    </button>
+
+</form>
+
+
+
+<div *ngFor="let assignment of assignments">
+    
+    <p class="good" *ngIf="assignment.rendu; else nomSoumis">
+        Le devoir {{assignment.nom}}  à était rendu par l'élève le {{assignment.dateDeRendu | date:'shortDate'}} : {{assignment.rendu}}
+    </p>
+
+    <ng-template #nomSoumis>
+        <p class="bad">
+            Le devoir {{assignment.nom}} n'a était rendu par l'élève  : {{assignment.rendu}}
+        </p>
+    </ng-template>
+</div>
+
