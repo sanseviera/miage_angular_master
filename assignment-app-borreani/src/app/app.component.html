@@ -1,0 +1,58 @@
+<div>
+    <mat-toolbar class="head">
+      <mat-toolbar-row> 
+        <img class="logo" src="../assets/UCA-Logo-1niveau-RVB-Blanc.png"/>
+        <div class="div">
+          <h1  class="text">{{nom+" - "+title}}</h1>
+        </div>
+      </mat-toolbar-row>
+    
+      <mat-toolbar-row > 
+
+        <button mat-icon-button (click)=clicSurBouton() aria-label="1">
+          <mat-icon class="buttonHead">menu</mat-icon>
+        </button>
+        <nav>
+          <a routerLink="/home">
+            <button mat-icon-button aria-label="2">
+              <mat-icon class="buttonHead">home</mat-icon>
+            </button>
+          </a>
+        </nav>
+        <nav>
+          <a routerLink="/count">
+            <button mat-icon-button aria-label="3">
+              <mat-icon class="buttonHead">account_circle</mat-icon>
+            </button>
+          </a>
+        </nav>
+
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+
+<div>
+  <mat-sidenav-container>
+    <mat-sidenav [opened]="opened"  mode="push">
+      <nav>
+        <a routerLink="/home">
+          <button mat-button class="buttonSideNav">Liste des devoirs</button>
+        </a>
+      </nav>
+      <nav>
+        <a routerLink="/add">
+          <button mat-button class="buttonSideNav">Ajout d'un devoir</button>
+        </a>
+      </nav>
+      <button mat-button (click)="value()" class="buttonSideNav">Modification d'un devoir</button>
+      <button mat-button (click)="value2()" class="buttonSideNav">Suppression d'un devoir</button>
+      <button mat-button (click)="value3()" class="buttonSideNav">Génération de données de test</button>
+      </mat-sidenav>
+      <mat-sidenav-content >
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>  
+  
