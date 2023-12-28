@@ -38,7 +38,7 @@ export class EditAssignmentComponent {
 
     if(this.assignment!=null){
       this.assignmentsService.updateAssignment(this.assignment)
-        .subscribe(message=>console.log(message));
+        .subscribe(reponse=>console.log("Réponse du serveur : "+reponse.message));
     }
 
     this.router.navigate(['home']);

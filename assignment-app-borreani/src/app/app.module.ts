@@ -31,6 +31,7 @@ import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assi
 import { authGuard} from './shared/auth.guard'
 import { MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { CountComponent } from './count/count.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes:Routes = [
   { 
@@ -71,7 +72,7 @@ const routes:Routes = [
     ComposentDetailComponent,
     AddAssignmentComponent,
     EditAssignmentComponent,
-    CountComponent
+    CountComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,6 +95,7 @@ const routes:Routes = [
     MatIconModule,
     RouterModule.forRoot(routes),
     MatSlideToggleModule,
+    HttpClientModule,
   ],
   bootstrap: [AppComponent]
 })

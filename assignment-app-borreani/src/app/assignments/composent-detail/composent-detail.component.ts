@@ -28,7 +28,7 @@ export class ComposentDetailComponent implements OnInit {
       this.assignmentTransmis.rendu = true;
 
       this.assignementsService.updateAssignment(this.assignmentTransmis)
-          .subscribe((message)=>{console.log(message)});
+          .subscribe((reponse)=>{console.log("Réponse du serveur : "+reponse.message)});
 
       this.router.navigate(["home"]);
 

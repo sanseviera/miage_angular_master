@@ -2,36 +2,19 @@ import { Injectable } from '@angular/core';
 import { Assignment } from '../assignments/assignment.model';
 import { Observable, of } from 'rxjs';
 import { LoggingService } from './logging.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssignmentsService {
 
-  constructor(private loggingService:LoggingService) { }
+  url = "http://localhost:8010/api/assignments";
+  constructor(private loggingService:LoggingService,private http:HttpClient ) { }
 
   id:number=3;
 
-  assignments:Assignment[] = [
-    {
-      id: 1,
-      nom: "TP1 Web Components à rendre",
-      dateDeRendu: new Date( '2020-11-17'),
-      rendu: true,
-    },
-    {
-      id: 2,
-      nom: "TP2 Angular à rendre",
-      dateDeRendu: new Date('2020-12-13'),
-      rendu: true,
-    },
-    {
-      id: 3,
-      nom: "Mini Projet Angular à rendre",
-      dateDeRendu: new Date('2021-01-07'),
-      rendu: false,
-    },
-  ];
+  assignments:Assignment[] = [];
 
   getFirstAssignments():Observable<Assignment|null>{
     if(this.assignments.length>0){
@@ -44,11 +27,11 @@ export class AssignmentsService {
   }
 
   getAssignments():Observable<Assignment[]>{
-    return of(this.assignments);
+    return this.http.get<Assignment[]>(this.url);
   }
 
   getAssignment(id:number):Observable<Assignment|undefined> {
-    return of(this.assignments.find(ass=>(ass.id===id)));
+    return this.http.get<Assignment>(this.url+"/"+id)
   }
 
   getNewId():number{
@@ -56,30 +39,18 @@ export class AssignmentsService {
     return this.id;
   }
 
-  addAssignment(assignment:Assignment):Observable<String>{
-    this.assignments.push(assignment);
-    if(assignment.nom!=null){
-      this.loggingService.log(assignment.nom,"ajouté");
-    }
-    return of("Assignment service: assignment ajouté");
+  addAssignment(assignment:Assignment):Observable<any>{
+    return this.http.post<Assignment>(this.url, assignment);
   }
 
-  updateAssignment(assignment:Assignment):Observable<String>{
-    if(assignment.nom!=null){
-      this.loggingService.log(assignment.nom,"modifié");
-    }
-    return of("Assignment service: assignment modifié");
+  updateAssignment(assignment:Assignment):Observable<any>{
+    return this.http.post<Assignment>(this.url, assignment);
   }
   
-  deleteAssignment(assignment?:Assignment):Observable<String>{
-    if(assignment!=null){
-      let pos = this.assignments.indexOf(assignment);
-      this.assignments.splice(pos,1);
-      if(assignment.nom!=null){
-        this.loggingService.log(assignment.nom,"supprimé");
-      }
-    }
-    return of("Assignment service: assignment supprimé");
+  deleteAssignment(assignment:Assignment):Observable<any>{
+    this.loggingService.log(assignment.nom,"supprimé");
+    return this.http.delete(this.url+"/"+assignment._id)
+
   }
 
 }
