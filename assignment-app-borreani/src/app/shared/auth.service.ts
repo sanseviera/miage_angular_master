@@ -70,5 +70,13 @@ export class AuthService {
     return isUserAdmin;
   }
 
+  setLogged(bool:boolean){
+    this.loggedIn=bool;
+  }
+
+  setAdmin(bool:boolean){
+    this.admin=bool;
+  }
+
   constructor() { }
 }

@@ -16,15 +16,9 @@ export class AssignmentsService {
 
   assignments:Assignment[] = [];
 
-  getFirstAssignments():Observable<Assignment|null>{
-    if(this.assignments.length>0){
-      return of(this.assignments[0]);
-    }
-    else{
-      return of(null);
-    }
-    
-  }
+  //getFirstAssignments():Observable<Assignment|null>{
+  //  return this.http.get<Assignment[]>(this.url);    
+  //}
 
   getAssignments():Observable<Assignment[]>{
     return this.http.get<Assignment[]>(this.url);

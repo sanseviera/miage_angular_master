@@ -41,7 +41,7 @@ export class EditAssignmentComponent {
         .subscribe(reponse=>console.log("Réponse du serveur : "+reponse.message));
     }
 
-    this.router.navigate(['home']);
+    this.router.navigate(['add']);
   }
 
   isAdmin(){
