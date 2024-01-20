@@ -14,5 +14,8 @@
     "mongodb": "^4.1.0",
     "mongoose": "^5.11.2",
     "multer": "1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "@angular/cli": "^17.1.0"
   }
 }
