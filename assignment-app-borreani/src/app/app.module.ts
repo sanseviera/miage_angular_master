@@ -32,6 +32,10 @@ import { authGuard} from './shared/auth.guard'
 import { MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { CountComponent } from './count/count.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 
 const routes:Routes = [
   { 
@@ -97,6 +101,9 @@ const routes:Routes = [
     RouterModule.forRoot(routes),
     MatSlideToggleModule,
     HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   bootstrap: [AppComponent]
 })

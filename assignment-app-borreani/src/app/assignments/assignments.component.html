@@ -1,20 +1,45 @@
 <main class="container">
 
-    <mat-list *ngFor="let assignment of assignments">
-        <nav><a routerLink="/assignment/{{assignment.id}}">
-            <h3 mat-subheader>Date de rendu : {{assignment.dateDeRendu|date}}</h3>
-            <mat-list-item>
-                <p appRendu *ngIf="assignment.rendu; else nonSoumis">
-                    Devoir intitulé {{assignment.nom}} a été rendu.
-                </p>
-                <ng-template #nonSoumis>
-                    <p appNonRendu>Le devoir {{assignment.nom}} n'a pas été rendu.</p>
-                </ng-template>
-            </mat-list-item>
-        </a></nav>
-        
-        <mat-divider></mat-divider>
-    </mat-list>
+    <mat-table #table [dataSource]="assignments">
+
+    
+        <!------------------------------------->
+        <!-- Définition de la colonne "name" -->
+        <!------------------------------------->
+
+        <!-- Définition de la colonne "name" -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *matCellDef="let assignment">{{ assignment.nom }}</mat-cell>
+        </ng-container>
+
+        <!-- Définition de la colonne "dateDeRendu" -->
+        <ng-container matColumnDef="dateDeRendu">
+            <mat-header-cell *matHeaderCellDef>Date de rendu</mat-header-cell>
+            <mat-cell *matCellDef="let assignment">{{ assignment.dateDeRendu | date }}</mat-cell>
+        </ng-container>
+
+        <!-- Définition de la colonne "liens" -->
+        <ng-container matColumnDef="liens">
+            <mat-header-cell *matHeaderCellDef>Liens</mat-header-cell>
+            <mat-cell *matCellDef="let assignment"><button mat-raised-button color="primary" routerLink="/assignment/{{ assignment.id }}">Aller à la page</button></mat-cell>
+        </ng-container>
+
+        <!--------------------------------------->
+        <!-- Utilisation des colonnes définies -->
+        <!--------------------------------------->
+        <mat-header-row *matHeaderRowDef="['name', 'dateDeRendu','liens']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['name', 'dateDeRendu','liens']"></mat-row>
+    </mat-table>
+
+    <mat-paginator 
+        (page)="handlePageEvent($event)"
+        [length]="totalDocs" 
+        [pageSize]="limit" 
+        [pageSizeOptions]="[10, 20 , 30]" 
+        aria-label="Select page"
+    ></mat-paginator>
+
 
 </main>
 

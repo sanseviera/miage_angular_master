@@ -20,6 +20,10 @@ export class AssignmentsService {
   //  return this.http.get<Assignment[]>(this.url);    
   //}
 
+  getAssignmentsPagine(page: number, limit: number) : Observable<any> {
+    return this.http.get<any>(this.url + '?page=' + page + '&limit=' + limit);
+  }
+
   getAssignments():Observable<Assignment[]>{
     return this.http.get<Assignment[]>(this.url);
   }

@@ -1,5 +1,8 @@
+const assignment = require('../model/assignment');
 let Assignment = require('../model/assignment');
 
+/*
+//Ancienne version qui ne prenais en compte la pagination
 // Récupérer tous les assignments (GET)
 function getAssignments(req, res){
     Assignment.find((err, assignments) => {
@@ -11,6 +14,9 @@ function getAssignments(req, res){
     });
 }
 
+*/
+
+
 // Récupérer un assignment par son id (GET)
 function getAssignment(req, res){
     let assignmentId = req.params.id;
@@ -19,6 +25,25 @@ function getAssignment(req, res){
         if(err){res.send(err)}
         res.json(assignment);
     })
+}
+
+
+function getAssignments(req, res){
+    var aggregateQuery = Assignment.aggregate();
+
+    Assignment.aggregatePaginate(
+        aggregateQuery,
+        {
+            page: parseInt(req.query.page) || 1,
+            limit: parseInt(req.query.limit) || 10,
+        },
+        (err, assignment)=>{
+            if(err){
+                res.send(err);
+            }
+            res.send(assignment);
+        }
+    )
 }
 
 // Ajout d'un assignment (POST)
