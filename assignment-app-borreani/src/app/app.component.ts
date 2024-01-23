@@ -12,14 +12,16 @@ import { window } from 'rxjs';
 })
 export class AppComponent {
   title = 'Application de gestion des devoirs (Assignments)';
-  nom = "BORREANI Théo";
-
+  noms = "BORREANI Théo";
+  mdp:string="";
+  nom:string="";
   opened = false;
   tmp:Assignment|null=null;
 
-  constructor(private authService: AuthService,
-      private router:Router,
-      private assignementsService: AssignmentsService,){}
+  constructor(
+    public authService: AuthService,
+    private router:Router,
+    private assignementsService: AssignmentsService,){}
 
   clicSurBouton(){
     this.opened=!this.opened;
@@ -54,8 +56,8 @@ export class AppComponent {
     this.router.navigate(['home']) .then(() => {
     
     //permet de créer une donnée persistante
-    localStorage.setItem('maVariable4', JSON.stringify(this.authService.isAdmin()));
-    localStorage.setItem('maVariable5', JSON.stringify(this.authService.isLogged()));
+    //localStorage.setItem('maVariable4', JSON.stringify(this.authService.isAdmin()));
+    //localStorage.setItem('maVariable5', JSON.stringify(this.authService.isLogged()));
 
     location.reload();
 
@@ -65,8 +67,26 @@ export class AppComponent {
 
   ngOnInit() {
     // permet de charger la donner persistente
-    this.authService.setAdmin(JSON.parse(localStorage.getItem('maVariable4') || '{}'));
-    this.authService.setLogged(JSON.parse(localStorage.getItem('maVariable5') || '{}'));
+    //this.authService.setAdmin(JSON.parse(localStorage.getItem('maVariable4') || '{}'));
+    //this.authService.setLogged(JSON.parse(localStorage.getItem('maVariable5') || '{}'));
   }
+
+  login(event:Event){
+    event.preventDefault;
+    this.authService.logIn(this.nom,this.mdp);
+    console.log(this.authService.admin);
+  }
+
+  deconnexion(event:Event){
+    event.preventDefault;
+
+    this.authService.setAdmin(false);
+    this.authService.setLogged(false);
+    this.authService.logOut()
+    
+    console.log(this.authService.isLogged());
+
+  }
+
   
 }

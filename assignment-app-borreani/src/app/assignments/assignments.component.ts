@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Assignment } from './assignment.model';
 import { AssignmentsService } from '../shared/assignments.service';
 import { PageEvent } from '@angular/material/paginator';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 
 @Component({
   selector: 'app-assignments',
@@ -9,6 +10,8 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrl: './assignments.component.css'
 })
 export class AssignmentsComponent implements OnInit {
+
+
 
   page:number=1;
   limit:number=10;
@@ -20,7 +23,11 @@ export class AssignmentsComponent implements OnInit {
   hasNextPage!:boolean;
 
   assignments:Assignment[]=[];
-  constructor(private assignmentService:AssignmentsService){}
+
+
+
+  constructor(private assignmentService:AssignmentsService){
+    }
 
   pageEvent!: PageEvent;
 
@@ -80,4 +87,6 @@ export class AssignmentsComponent implements OnInit {
 
 
   assignmentSelectionne?: Assignment | null =null;
+
+  
 }

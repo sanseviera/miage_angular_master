@@ -32,3 +32,33 @@ mat-sidenav{
 .div{
     width: 100%;
 }
+
+.flex-container {
+    display: flex;
+    justify-content: flex-end; /* Ajustez selon votre besoin : flex-start, center, flex-end, space-between, etc. */
+    align-items: center; /* Ajustez selon votre besoin : flex-start, center, flex-end, stretch, etc. */
+    align-content: center;
+    height: 30px;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .my-small-items {
+    margin-bottom: 7px;
+    padding: 0px;
+    margin-left: 50px;
+    font-size: 12px; /* Ajustez la taille de la police selon vos besoins */
+    width: 80px; /* Ajustez la largeur selon vos besoins */
+    /* Ajoutez d'autres styles si nécessaire */
+  }
+
+  .my-small-items2 {
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: 10px;
+    padding: 0px;
+    font-size: 15px;
+    width: 140px; 
+    box-sizing: border-box; 
+    scale: 0.7;
+  }

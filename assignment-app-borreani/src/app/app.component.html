@@ -3,7 +3,7 @@
       <mat-toolbar-row> 
         <img class="logo" src="../assets/UCA-Logo-1niveau-RVB-Blanc.png"/>
         <div class="div">
-          <h1  class="text">{{nom+" - "+title}}</h1>
+          <h1  class="text">{{noms+" - "+title}}</h1>
         </div>
       </mat-toolbar-row>
     
@@ -26,7 +26,33 @@
             </button>
           </a>
         </nav>
-
+          <div class="flex-container" *ngIf="!this.authService.admin">
+            <mat-form-field class="my-small-items2">
+              <input matInput 
+                placeholder="Nom"
+                [(ngModel)]="nom"
+                name="nom">
+              </mat-form-field>
+              <mat-form-field class="my-small-items2">
+                <input matInput 
+                [(ngModel)]="mdp"
+                  placeholder="Mot de passe"
+                  name="nom">
+                </mat-form-field>
+                <button mat-flat-button 
+                (click)="login($event)"
+                  color="primary" 
+                  class="my-small-items">
+                  Valider
+                </button>
+            </div>
+            <div class="flex-container" *ngIf="this.authService.admin">
+              <button mat-icon-button style="color: white" aria-label="Example icon button with a heart icon"
+              (click)="deconnexion($event)">
+                <mat-icon>exit_to_app</mat-icon>
+                
+              </button>
+            </div>
       </mat-toolbar-row>
     </mat-toolbar>
   </div>

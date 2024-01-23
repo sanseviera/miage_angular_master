@@ -31,7 +31,6 @@ export class AuthService {
   logIn(name:String , mdp:String){
     let tmp:boolean = false;
     let i:number=0;
-    console.log("hariza");
     for( i; i<this.authData.length ;i++){
       if(this.authData[i].nom===name && this.authData[i].password===mdp){
         tmp=true;

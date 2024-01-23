@@ -1,6 +1,7 @@
 <main class="container">
 
-    <mat-table #table [dataSource]="assignments">
+
+        <mat-table #table [dataSource]="assignments" class="table-with-shadow">
 
     
         <!------------------------------------->
@@ -39,7 +40,6 @@
         [pageSizeOptions]="[10, 20 , 30]" 
         aria-label="Select page"
     ></mat-paginator>
-
 
 </main>
 
