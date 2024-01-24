@@ -3,6 +3,7 @@ import { Assignment } from '../assignments/assignment.model';
 import { Observable, of } from 'rxjs';
 import { LoggingService } from './logging.service';
 import { HttpClient } from '@angular/common/http';
+import { map, filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,8 @@ export class AssignmentsService {
   //}
 
   getAssignmentsPagine(page: number, limit: number) : Observable<any> {
-    return this.http.get<any>(this.url + '?page=' + page + '&limit=' + limit);
+    let x = this.http.get<any>(this.url + '?page=' + page + '&limit=' + limit);
+    return x;
   }
 
   getAssignments():Observable<Assignment[]>{

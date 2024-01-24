@@ -3,6 +3,8 @@ import { Assignment } from './assignment.model';
 import { AssignmentsService } from '../shared/assignments.service';
 import { PageEvent } from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @Component({
   selector: 'app-assignments',
@@ -24,12 +26,14 @@ export class AssignmentsComponent implements OnInit {
 
   assignments:Assignment[]=[];
 
+  pageEvent!: PageEvent;
+
+  assignmentSelectionne?: Assignment | null =null;
 
 
   constructor(private assignmentService:AssignmentsService){
     }
 
-  pageEvent!: PageEvent;
 
 
   ngOnInit(): void {
@@ -45,6 +49,7 @@ export class AssignmentsComponent implements OnInit {
         console.log("Données recues");
       }
     )
+   
   }
 
   getAssignmentsPagine() {
@@ -70,8 +75,9 @@ export class AssignmentsComponent implements OnInit {
         })
   }
 
-
-
+  function(assignment: Assignment){
+    this.assignmentSelectionne = assignment;
+  }
 
 
   handlePageEvent(event: PageEvent) {
@@ -85,8 +91,13 @@ export class AssignmentsComponent implements OnInit {
     this.getAssignmentsPagine();
   }
 
+  filterValue: boolean | null = null;
 
-  assignmentSelectionne?: Assignment | null =null;
+  applyFilter() {
+    this.filterValue = false;
+    this.assignments= this.assignments.filter((e)=>{return e.rendu==false});
+  }
 
-  
+
+
 }

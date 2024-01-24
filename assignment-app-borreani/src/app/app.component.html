@@ -19,13 +19,7 @@
             </button>
           </a>
         </nav>
-        <nav>
-          <a routerLink="/count">
-            <button mat-icon-button aria-label="3">
-              <mat-icon class="buttonHead">account_circle</mat-icon>
-            </button>
-          </a>
-        </nav>
+        
           <div class="flex-container" *ngIf="!this.authService.admin">
             <mat-form-field class="my-small-items2">
               <input matInput 
