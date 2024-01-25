@@ -27,12 +27,14 @@
                 [(ngModel)]="nom"
                 name="nom">
               </mat-form-field>
+              <div style="font-size: 10px">
               <mat-form-field class="my-small-items2">
                 <input matInput 
                 [(ngModel)]="mdp"
                   placeholder="Mot de passe"
                   name="nom">
                 </mat-form-field>
+              </div>
                 <button mat-flat-button 
                 (click)="login($event)"
                   color="primary" 
