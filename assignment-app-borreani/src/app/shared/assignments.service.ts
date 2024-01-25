@@ -13,7 +13,6 @@ export class AssignmentsService {
   url = "http://localhost:8010/api/assignments";
   constructor(private loggingService:LoggingService,private http:HttpClient ) { }
 
-  id:number=3;
 
   assignments:Assignment[] = [];
 
@@ -35,8 +34,7 @@ export class AssignmentsService {
   }
 
   getNewId():number{
-    this.id=this.id+1;
-    return this.id;
+    return Date.now();
   }
 
   addAssignment(assignment:Assignment):Observable<any>{
