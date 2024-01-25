@@ -32,11 +32,10 @@ function getAssignments(req, res){
     var aggregateQuery = Assignment.aggregate();
     var tmp = req.query.recherche + "[a-zA-Z0-9]*";
 
-     aggregateQuery.match({ nom: { $regex:tmp}});
+    // recherche
+    aggregateQuery.match({ nom: { $regex:tmp}});
     // trie
-    if(false){ // trie
-        aggregateQuery.sort("nom")
-    }
+    aggregateQuery.sort({nom: 1});
     // filtre rendu ou non rendu
     if(req.query.trie ==="rendu"){ 
         aggregateQuery.match({ rendu: true});
