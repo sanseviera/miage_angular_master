@@ -21,6 +21,11 @@ let AssignmentsShema = Schema({
     dateDeRendu: Date,
     nom: String,
     rendu: Boolean,
+    auteur: String, // Nom de l'élève
+    matiere: String, // Matière
+    prof: String, // Prof
+    note: Number, // Note sur 20
+    remarques: String, // Remarques sur l'assignment
 });
 
 AssignmentsShema.plugin(aggregatePaginate);

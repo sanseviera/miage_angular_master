@@ -63,6 +63,12 @@ function postAssignment(req, res){
     assignment.nom = req.body.nom;
     assignment.dateDeRendu = req.body.dateDeRendu;
     assignment.rendu = req.body.rendu;
+    assignment.auteur = req.body.auteur; // Nom de l'élève
+    assignment.matiere = req.body.matiere; // Matière
+    assignment.prof = req.body.prof; // Prof
+    assignment.note = req.body.note; // Note sur 20
+    assignment.remarques = req.body.remarques; // Remarques sur l'assignment
+  
 
     console.log("POST assignment reçu :");
     console.log(assignment)

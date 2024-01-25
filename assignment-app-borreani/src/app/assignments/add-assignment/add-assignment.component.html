@@ -18,6 +18,48 @@
             name="nom">
     </mat-form-field>
 
+    <mat-form-field>
+        <input matInput 
+            [disabled]="!isAdmin()"     
+            placeholder="Nom de l'auteur"
+            [(ngModel)]="auteur"
+            name="auteur">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Matière" [(ngModel)]="matiere" name="matiere">
+            <mat-option *ngFor="let matiere of matieres" [value]="matiere">
+                {{matiere}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-select placeholder="Professeur" [(ngModel)]="prof" name="prof">
+            <mat-option *ngFor="let prof of profs" [value]="prof">
+                {{prof}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>  
+    
+    
+    <mat-form-field>
+        <input matInput 
+            [disabled]="!isAdmin()"     
+            placeholder="Note sur 20"
+            [(ngModel)]="note"
+            name="note">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <textarea matInput 
+            [disabled]="!isAdmin()"     
+            placeholder="Remarques sur l'assignment"
+            [(ngModel)]="remarques"
+            name="remarques">
+        </textarea>
+
+    </mat-form-field>
     <button mat-flat-button 
         [disabled]="!isAdmin()"
         color="primary" 

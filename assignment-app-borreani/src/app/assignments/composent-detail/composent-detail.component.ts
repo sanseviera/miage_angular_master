@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Assignment } from '../assignment.model';
+import { Assignment, MatiereImages, ProfImages } from '../assignment.model';
 import { AssignmentsService } from '../../shared/assignments.service'; 
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../shared/auth.service';
@@ -10,6 +10,10 @@ import { AuthService } from '../../shared/auth.service';
   styleUrl: './composent-detail.component.css'
 })
 export class ComposentDetailComponent implements OnInit {
+
+    
+  MatiereImages = MatiereImages; // Make MatiereImages accessible in the template
+  ProfImages = ProfImages; // Make ProfImages accessible in the template
 
 
   constructor(private assignementsService: AssignmentsService,
@@ -51,12 +55,18 @@ export class ComposentDetailComponent implements OnInit {
   onClickEdit(){
     this.router.navigate(['/assignment',this.assignmentTransmis?.id,'edit'],
                           {
-                            queryParams: {'nom':this.assignmentTransmis?.nom,
-                                          'date':this.assignmentTransmis?.dateDeRendu
-                                        },
+                            queryParams: {
+                              'nom':this.assignmentTransmis?.nom,
+                              'date':this.assignmentTransmis?.dateDeRendu,
+                              'auteur': this.assignmentTransmis?.auteur,
+                              'matiere': this.assignmentTransmis?.matiere,
+                              'prof': this.assignmentTransmis?.prof,
+                              'note': this.assignmentTransmis?.note,
+                              'remarques': this.assignmentTransmis?.remarques
+                            },
                             fragment: 'edition'
                           });
-  }
+}
 
   isAdmin(){
     return this.authService.admin; 
