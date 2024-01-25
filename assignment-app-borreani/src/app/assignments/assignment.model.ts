@@ -31,7 +31,7 @@ export class Assignment {
     nom!: String;
     dateDeRendu?: Date;
     rendu?: boolean;
-    id?: number;
+    id?: number;    
     auteur!: String; // Nom de l'élève
     matiere!: Matiere; // Matière
     prof!: Prof; // Prof

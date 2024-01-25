@@ -37,6 +37,10 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatSelectModule } from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio'; 
+
+import {MatStepperModule} from '@angular/material/stepper';
+import { ReactiveFormsModule } from '@angular/forms';
+
 const routes:Routes = [
   { 
     path:'', 
@@ -106,6 +110,8 @@ const routes:Routes = [
     MatSortModule,
     MatSelectModule,
     MatRadioModule,
+    MatStepperModule,
+    ReactiveFormsModule,
 
   ],
   bootstrap: [AppComponent]

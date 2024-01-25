@@ -1,70 +1,89 @@
-<form class="form" #formAssignment>
-
-    <mat-form-field>
-        <input matInput [matDatepicker]="picker"
-            [disabled]="!isAdmin()"
-            [(ngModel)]="dateRendu"
-            placeholder="Date de rendu"
-            name="date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
- 
-    <mat-form-field>
-        <input matInput 
-            [disabled]="!isAdmin()"
-            placeholder="Nom du devoir"
-            [(ngModel)]="nomDevoir"
-            name="nom">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput 
-            [disabled]="!isAdmin()"     
-            placeholder="Nom de l'auteur"
-            [(ngModel)]="auteur"
-            name="auteur">
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-select placeholder="Matière" [(ngModel)]="matiere" name="matiere">
-            <mat-option *ngFor="let matiere of matieres" [value]="matiere">
-                {{matiere}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-    
-    <mat-form-field>
-        <mat-select placeholder="Professeur" [(ngModel)]="prof" name="prof">
-            <mat-option *ngFor="let prof of profs" [value]="prof">
-                {{prof}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>  
-    
-    
-    <mat-form-field>
-        <input matInput 
-            [disabled]="!isAdmin()"     
-            placeholder="Note sur 20"
-            [(ngModel)]="note"
-            name="note">
-    </mat-form-field>
-    
-    <mat-form-field>
-        <textarea matInput 
-            [disabled]="!isAdmin()"     
-            placeholder="Remarques sur l'assignment"
-            [(ngModel)]="remarques"
-            name="remarques">
-        </textarea>
-
-    </mat-form-field>
-    <button mat-flat-button 
-        [disabled]="!isAdmin()"
-        color="primary" 
-        (click)="onSubmit($event);formAssignment.reset()">
-        Ajouter un devoir
-    </button>
-
-</form>
+<mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Informations de base</ng-template>
+            <mat-form-field>
+                <input matInput 
+                    [disabled]="!isAdmin()" 
+                    placeholder="Nom de l'assignment"
+                    formControlName="nom">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker"
+                    [disabled]="!isAdmin()"
+                    [(ngModel)]="dateRendu"
+                    placeholder="Date de rendu"
+                    name="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperNext>Suivant</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Informations supplémentaires</ng-template>
+            <mat-form-field>
+                <input matInput 
+                    [disabled]="!isAdmin()" 
+                    placeholder="Auteur"
+                    formControlName="auteur">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Professeur" [(ngModel)]="prof" name="prof">
+                    <mat-option *ngFor="let prof of profs" [value]="prof">
+                        {{prof}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field> 
+            <mat-form-field>
+                <mat-select placeholder="Matière" [(ngModel)]="matiere" name="matiere">
+                    <mat-option *ngFor="let matiere of matieres" [value]="matiere">
+                        {{matiere}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Précédent</button>
+                <button mat-button matStepperNext>Suivant</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Remarques et note</ng-template>
+            <mat-form-field>
+                <input matInput 
+                    [disabled]="!isAdmin()" 
+                    placeholder="Note sur 20"
+                    formControlName="note">
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput 
+                    [disabled]="!isAdmin()"     
+                    placeholder="Remarques sur l'assignment"
+                    formControlName="remarques">
+                </textarea>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Précédent</button>
+                <button mat-button matStepperNext>Suivant</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Confirmer</ng-template>
+        <p>Vous êtes prêt à ajouter un devoir.</p>
+        <div>
+            <button mat-button matStepperPrevious>Précédent</button>
+            <button mat-flat-button 
+                [disabled]="!isAdmin()"
+                color="primary" 
+                (click)="onSubmit($event);stepper.reset()">
+                Ajouter un devoir
+            </button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

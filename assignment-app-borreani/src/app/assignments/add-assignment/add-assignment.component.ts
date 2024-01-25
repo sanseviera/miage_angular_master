@@ -3,13 +3,15 @@ import { Assignment, Matiere, Prof } from '../assignment.model';
 import { AssignmentsService } from '../../shared/assignments.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-add-assignment',
   templateUrl: './add-assignment.component.html',
   styleUrl: './add-assignment.component.css'
 })
-export class AddAssignmentComponent {
+export class AddAssignmentComponent implements OnInit{
 
 
   matieres = Object.values(Matiere); // Convert the Matiere enum to an array
@@ -23,11 +25,30 @@ export class AddAssignmentComponent {
   note!: number; // Note sur 20
   remarques!: string; // Remarques sur l'assignment
 
-  
+  firstFormGroup!: FormGroup;
+  secondFormGroup!: FormGroup;
+  thirdFormGroup!: FormGroup;
 
   constructor(private assignmentService:AssignmentsService, 
     private router:Router,
-    private authService: AuthService,){}
+    private authService: AuthService, private _formBuilder: FormBuilder){}
+
+
+    ngOnInit() {
+      this.firstFormGroup = this._formBuilder.group({
+          nom: ['', Validators.required],
+          dateDeRendu: ['', Validators.required]
+      });
+      this.secondFormGroup = this._formBuilder.group({
+          auteur: ['', Validators.required],
+          prof: ['', Validators.required],
+          matiere: ['', Validators.required]
+      });
+      this.thirdFormGroup = this._formBuilder.group({
+          note: ['', Validators.required],
+          remarques: ''
+      });
+  }
 
   onSubmit(event:Event){
     event.preventDefault();
