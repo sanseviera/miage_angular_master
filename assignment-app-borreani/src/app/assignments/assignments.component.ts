@@ -32,7 +32,8 @@ export class AssignmentsComponent implements OnInit {
   // Selection
   choice: string = "rendu et non rendu";
   choices: string[] = ['rendu', 'non rendu', 'rendu et non rendu'];
-
+  // Recherche 
+  recherche: String = "";
 
   constructor(private assignmentService:AssignmentsService){
     }
@@ -40,7 +41,7 @@ export class AssignmentsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.assignmentService.getAssignmentsPagine(this.page, this.limit, this.choice).subscribe(
+    this.assignmentService.getAssignmentsPagine(this.page, this.limit, this.choice, this.recherche).subscribe(
       data => {
         this.assignments = data.docs;
         this.totalDocs = data.totalDocs;
@@ -56,7 +57,7 @@ export class AssignmentsComponent implements OnInit {
   }
 
   getAssignmentsPagine() {
-    this.assignmentService.getAssignmentsPagine(this.page, this.limit, this.choice).subscribe(
+    this.assignmentService.getAssignmentsPagine(this.page, this.limit, this.choice, this.recherche).subscribe(
       data => {
         this.assignments = data.docs;
         this.totalDocs = data.totalDocs;

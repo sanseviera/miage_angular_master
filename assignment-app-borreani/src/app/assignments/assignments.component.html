@@ -1,7 +1,10 @@
 
 <mat-form-field >
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter()" placeholder="Search columns" #input>
+    <mat-label>Recherche</mat-label>
+    <input matInput
+      [(ngModel)]="recherche"
+      (keyup)="getAssignmentsPagine()"
+       placeholder="Search columns" #input>
 </mat-form-field>
 
 <mat-radio-group

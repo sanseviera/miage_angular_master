@@ -30,12 +30,10 @@ function getAssignment(req, res){
 
 function getAssignments(req, res){
     var aggregateQuery = Assignment.aggregate();
+    var tmp = req.query.recherche + "[a-zA-Z0-9]*";
 
-
-    console.log(req.query.trie);
-    if (false) { // champ recherche
-        aggregateQuery.match({ nom: "test Théo"});
-    }
+     aggregateQuery.match({ nom: { $regex:tmp}});
+    // trie
     if(false){ // trie
         aggregateQuery.sort("nom")
     }
