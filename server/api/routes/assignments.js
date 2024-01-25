@@ -31,6 +31,16 @@ function getAssignment(req, res){
 function getAssignments(req, res){
     var aggregateQuery = Assignment.aggregate();
 
+    if (false) { // champ recherche
+        aggregateQuery.match({ nom: "test Théo"});
+    }
+    if(false){ // trie
+        aggregateQuery.sort("nom")
+    }
+    if(false){ // filtre
+    }
+
+
     Assignment.aggregatePaginate(
         aggregateQuery,
         {

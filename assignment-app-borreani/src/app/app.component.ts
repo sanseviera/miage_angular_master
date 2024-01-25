@@ -17,6 +17,7 @@ export class AppComponent {
   nom:string="";
   opened = false;
   tmp:Assignment|null=null;
+  hide: boolean = true;
 
   constructor(
     public authService: AuthService,
@@ -75,6 +76,9 @@ export class AppComponent {
     event.preventDefault;
     this.authService.logIn(this.nom,this.mdp);
     console.log(this.authService.admin);
+    this.nom = "";
+    this.mdp = "";
+    this.hide = true;
   }
 
   deconnexion(event:Event){

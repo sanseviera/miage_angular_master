@@ -30,10 +30,14 @@
               <div style="font-size: 10px">
               <mat-form-field class="my-small-items2">
                 <input matInput 
-                [(ngModel)]="mdp"
+                [type]="hide ? 'password' : 'text'"           
+                     [(ngModel)]="mdp"
                   placeholder="Mot de passe"
                   name="nom">
-                </mat-form-field>
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                  </button>
+              </mat-form-field>
               </div>
                 <button mat-flat-button 
                 (click)="login($event)"
