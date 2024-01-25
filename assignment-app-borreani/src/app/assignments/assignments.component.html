@@ -1,21 +1,30 @@
 
-<mat-form-field >
-    <mat-label>Recherche</mat-label>
-    <input matInput
-      [(ngModel)]="recherche"
-      (keyup)="getAssignmentsPagine()"
-       placeholder="Search columns" #input>
-</mat-form-field>
+<div style="display: flex; justify-content: center;align-items: center; width: 100%">
+  <div style="padding: 10px ;margin: 5px ;border: 3px solid #000; border-color: black; ">
+    <mat-form-field >
+      <mat-label>Recherche</mat-label>
+      <input matInput
+        [(ngModel)]="recherche"
+        (keyup)="getAssignmentsPagine()"
+        placeholder="Search columns" #input>
+    </mat-form-field>
+  </div>
+  <div style="padding: 10px ;margin: 5px ;border: 3px solid #000; border-color: black; ">
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      (change)="getAssignmentsPagine()"
+      [(ngModel)]="choice">
+      @for (season of choices; track season) {
+        <mat-radio-button class="example-radio-button" [value]="season">{{season}}</mat-radio-button>
+      }
+  </mat-radio-group>
+  </div>
+</div>
 
-<mat-radio-group
-  aria-labelledby="example-radio-group-label"
-  class="example-radio-group"
-  (change)="getAssignmentsPagine()"
-  [(ngModel)]="choice">
-  @for (season of choices; track season) {
-    <mat-radio-button class="example-radio-button" [value]="season">{{season}}</mat-radio-button>
-  }
-</mat-radio-group>
+
+
+
 
 
 <section class="example-container mat-elevation-z8" tabindex="0">
