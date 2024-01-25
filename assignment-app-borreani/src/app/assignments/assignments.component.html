@@ -4,6 +4,15 @@
     <input matInput (keyup)="applyFilter()" placeholder="Search columns" #input>
 </mat-form-field>
 
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group"
+  (change)="getAssignmentsPagine()"
+  [(ngModel)]="choice">
+  @for (season of choices; track season) {
+    <mat-radio-button class="example-radio-button" [value]="season">{{season}}</mat-radio-button>
+  }
+</mat-radio-group>
 
 
 <section class="example-container mat-elevation-z8" tabindex="0">

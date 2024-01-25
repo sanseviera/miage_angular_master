@@ -31,13 +31,20 @@ function getAssignment(req, res){
 function getAssignments(req, res){
     var aggregateQuery = Assignment.aggregate();
 
+
+    console.log(req.query.trie);
     if (false) { // champ recherche
         aggregateQuery.match({ nom: "test Théo"});
     }
     if(false){ // trie
         aggregateQuery.sort("nom")
     }
-    if(false){ // filtre
+    // filtre rendu ou non rendu
+    if(req.query.trie ==="rendu"){ 
+        aggregateQuery.match({ rendu: true});
+    }
+    else if(req.query.trie ==="non rendu"){
+        aggregateQuery.match({ rendu: false});
     }
 
 

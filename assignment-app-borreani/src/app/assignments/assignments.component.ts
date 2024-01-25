@@ -14,7 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 export class AssignmentsComponent implements OnInit {
 
 
-
+  //variables pour pagination
   page:number=1;
   limit:number=10;
   totalDocs!:number;
@@ -23,12 +23,15 @@ export class AssignmentsComponent implements OnInit {
   prevPage!:number;
   hasPrevPage!:boolean;
   hasNextPage!:boolean;
-
+  //variable assignment
   assignments:Assignment[]=[];
-
+  assignmentSelectionne?: Assignment | null =null
+  //
   pageEvent!: PageEvent;
-
-  assignmentSelectionne?: Assignment | null =null;
+  // varianles pour les filtres, recherches, etc.
+  // Selection
+  choice: string = "rendu et non rendu";
+  choices: string[] = ['rendu', 'non rendu', 'rendu et non rendu'];
 
 
   constructor(private assignmentService:AssignmentsService){
@@ -37,7 +40,7 @@ export class AssignmentsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.assignmentService.getAssignmentsPagine(this.page, this.limit).subscribe(
+    this.assignmentService.getAssignmentsPagine(this.page, this.limit, this.choice).subscribe(
       data => {
         this.assignments = data.docs;
         this.totalDocs = data.totalDocs;
@@ -53,7 +56,7 @@ export class AssignmentsComponent implements OnInit {
   }
 
   getAssignmentsPagine() {
-    this.assignmentService.getAssignmentsPagine(this.page, this.limit).subscribe(
+    this.assignmentService.getAssignmentsPagine(this.page, this.limit, this.choice).subscribe(
       data => {
         this.assignments = data.docs;
         this.totalDocs = data.totalDocs;

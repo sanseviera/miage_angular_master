@@ -20,8 +20,8 @@ export class AssignmentsService {
   //  return this.http.get<Assignment[]>(this.url);    
   //}
 
-  getAssignmentsPagine(page: number, limit: number) : Observable<any> {
-    let x = this.http.get<any>(this.url + '?page=' + page + '&limit=' + limit);
+  getAssignmentsPagine(page: number, limit: number, trie:String) : Observable<any> {
+    let x = this.http.get<any>(this.url + '?page=' + page + '&limit=' + limit + '&trie=' + trie);
     return x;
   }
 

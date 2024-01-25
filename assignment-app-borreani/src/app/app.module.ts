@@ -36,7 +36,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatSelectModule } from '@angular/material/select';
-
+import {MatRadioModule} from '@angular/material/radio'; 
 const routes:Routes = [
   { 
     path:'', 
@@ -105,6 +105,8 @@ const routes:Routes = [
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
+    MatRadioModule,
+
   ],
   bootstrap: [AppComponent]
 })

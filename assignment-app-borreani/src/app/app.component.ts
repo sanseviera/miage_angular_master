@@ -90,6 +90,8 @@ export class AppComponent {
     
     console.log(this.authService.isLogged());
 
+    location.reload();
+
   }
 
   
