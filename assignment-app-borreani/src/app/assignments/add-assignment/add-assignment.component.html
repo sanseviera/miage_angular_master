@@ -13,6 +13,7 @@
                     [disabled]="!isAdmin()"
                     [(ngModel)]="dateRendu"
                     placeholder="Date de rendu"
+                    formControlName="dateDeRendu"
                     name="date">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -32,14 +33,14 @@
                     formControlName="auteur">
             </mat-form-field>
             <mat-form-field>
-                <mat-select placeholder="Professeur" [(ngModel)]="prof" name="prof">
+                <mat-select placeholder="Professeur" [(ngModel)]="prof" name="prof" formControlName="prof">
                     <mat-option *ngFor="let prof of profs" [value]="prof">
                         {{prof}}
                     </mat-option>
                 </mat-select>
             </mat-form-field> 
             <mat-form-field>
-                <mat-select placeholder="Matière" [(ngModel)]="matiere" name="matiere">
+                <mat-select placeholder="Matière" [(ngModel)]="matiere" name="matiere" formControlName="matiere" >
                     <mat-option *ngFor="let matiere of matieres" [value]="matiere">
                         {{matiere}}
                     </mat-option>
