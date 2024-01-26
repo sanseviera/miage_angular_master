@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Assignment } from '../assignment.model'; 
+import { Assignment, Matiere, Prof } from '../assignment.model'; 
 import { AssignmentsService } from '../../shared/assignments.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../shared/auth.service';
@@ -14,12 +14,18 @@ export class EditAssignmentComponent {
 
   assignment?: Assignment;
 
+
+  matieres = Object.values(Matiere); // Convert the Matiere enum to an array
+  profs = Object.values(Prof); // Convert the Prof enum to an array
+
   constructor(private assignmentsService:AssignmentsService,
               private route:ActivatedRoute,
               private router:Router,
               private authService: AuthService,){}
 
   ngOnInit(): void{
+
+
     const id = +this.route.snapshot.params['id'];
     this.assignmentsService.getAssignment(id)
       .subscribe(ass => this.assignment = ass);
