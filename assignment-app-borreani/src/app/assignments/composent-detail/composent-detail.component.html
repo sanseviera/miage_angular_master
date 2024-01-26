@@ -1,3 +1,8 @@
+
+
+
+
+
 <div class="container">
     <mat-card *ngIf="assignmentTransmis">
         <mat-card-title>
@@ -6,26 +11,27 @@
         <mat-card-subtitle>
             {{assignmentTransmis.dateDeRendu|date}}
         </mat-card-subtitle>
-        <mat-card-subtitle>
-            Auteur: {{assignmentTransmis.auteur}}
-        </mat-card-subtitle>
-        <mat-card-subtitle>
-            Matière: {{assignmentTransmis.matiere}}
-        </mat-card-subtitle>
-        <p>{{MatiereImages[assignmentTransmis.matiere]}}</p>
 
-        <img [src]="MatiereImages[assignmentTransmis.matiere]" alt="Image de la matière">
-        <mat-card-subtitle>
-            Professeur: {{assignmentTransmis.prof}}
-        </mat-card-subtitle>
-        <img [src]="ProfImages[assignmentTransmis.prof]" alt="Image du professeur">
+        <div class="flex-container">
+            <div>
+                <h3>Auteur: {{assignmentTransmis.auteur}}</h3>
+                <h3>Matière: {{assignmentTransmis.matiere}}</h3>
+                <img class="matiere-image" [src]="MatiereImages[assignmentTransmis.matiere]" alt="Image de la matière">
+            </div>
+            <div>
+                <h3>Professeur: {{assignmentTransmis.prof}}</h3>
+                <img class="prof-image" [src]="ProfImages[assignmentTransmis.prof]" alt="Image du professeur">
+            </div>
+        </div>
+
         <mat-card-subtitle>
             Note: {{assignmentTransmis.note}}
         </mat-card-subtitle>
         <mat-card-subtitle>
             Remarques: {{assignmentTransmis.remarques}}
         </mat-card-subtitle>
-        
+
+
         <mat-checkbox [disabled]="!isAdmin()"  *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">
             Devoir rendu
         </mat-checkbox>
@@ -35,5 +41,8 @@
         <button  [disabled]="!isLogged()" color="primary" (click)="onClickEdit()">
             Modifier devoir
         </button>
-    </mat-card>
+        
+
+        
+           </mat-card>
 </div>

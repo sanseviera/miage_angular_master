@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.mat-card {
+    width: 800px; /* Adjust as needed */
+    height: auto; /* Adjust as needed */
+    margin: 2em auto;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.matiere-image,
+.prof-image {
+    width: 150px; /* Adjust as needed */
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+}

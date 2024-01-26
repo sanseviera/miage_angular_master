@@ -3,6 +3,7 @@ import { Assignment, Matiere, Prof } from '../assignment.model';
 import { AssignmentsService } from '../../shared/assignments.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../shared/auth.service';
+import {  OnInit } from '@angular/core';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { AuthService } from '../../shared/auth.service';
   templateUrl: './edit-assignment.component.html',
   styleUrl: './edit-assignment.component.css'
 })
-export class EditAssignmentComponent {
+export class EditAssignmentComponent implements OnInit{
 
   assignment?: Assignment;
 
@@ -47,7 +48,7 @@ export class EditAssignmentComponent {
         .subscribe(reponse=>console.log("Réponse du serveur : "+reponse.message));
     }
 
-    this.router.navigate(['add']);
+    this.router.navigate(['home']);
   }
 
   isAdmin(){
