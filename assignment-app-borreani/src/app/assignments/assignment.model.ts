@@ -20,9 +20,9 @@ export const MatiereImages = {
 }
 
 export const ProfImages = {
-    [Prof.PROF_1]: 'assets/UCA-Logo-1niveau-RVB-Blanc.png',
-    [Prof.PROF_2]: 'assets/UCA-Logo-1niveau-RVB-Blanc.png',
-    [Prof.PROF_3]: 'assets/UCA-Logo-1niveau-RVB-Blanc.png',
+    [Prof.PROF_1]: 'assets/pigeon2.jpg',
+    [Prof.PROF_2]: 'assets/mouette.jpg',
+    [Prof.PROF_3]: 'assets/canard.jpg',
     // Ajoutez d'autres images de profs ici
 }
 

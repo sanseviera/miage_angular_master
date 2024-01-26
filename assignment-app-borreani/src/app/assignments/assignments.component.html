@@ -1,6 +1,6 @@
 
 <div style="display: flex; justify-content: center;align-items: center; width: 100%">
-  <div style="padding: 10px ;margin: 5px ;border: 3px solid #000; border-color: black; ">
+  <div style="height:80px; padding: 10px ; margin: 5px ; border: 3px solid #000; border-color: black; ">
     <mat-form-field >
       <mat-label>Recherche</mat-label>
       <input matInput
@@ -9,7 +9,7 @@
         placeholder="Search columns" #input>
     </mat-form-field>
   </div>
-  <div style="padding: 10px ;margin: 5px ;border: 3px solid #000; border-color: black; ">
+  <div style="height:80px; padding: 10px ;margin: 5px ;border: 3px solid #000; border-color: black; ">
     <mat-radio-group
       aria-labelledby="example-radio-group-label"
       class="example-radio-group"
@@ -39,7 +39,8 @@
               <section *ngIf="assignment.rendu" style="height:10px; width:10px; background-color: green; border: solid black; border-width: 1px; border-radius: 30px;"></section>
             </td>
           </ng-container>
-      
+
+         
           <!-- Définition de la colonne "name" -->
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -77,9 +78,7 @@
     
     
     <section style="position: sticky; bottom: 0; background-color: white; z-index: 1;">
-        <div *ngIf="this.assignmentSelectionne!=null">
-        <mat-card ng>{{this.assignmentSelectionne.id}}</mat-card>
-        </div>
+        
         <mat-paginator 
         (page)="handlePageEvent($event)"
         [length]="totalDocs" 

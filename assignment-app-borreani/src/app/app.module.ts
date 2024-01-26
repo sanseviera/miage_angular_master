@@ -40,7 +40,7 @@ import {MatRadioModule} from '@angular/material/radio';
 
 import {MatStepperModule} from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import {MatDialogModule} from '@angular/material/dialog'; 
 const routes:Routes = [
   { 
     path:'', 
@@ -112,7 +112,7 @@ const routes:Routes = [
     MatRadioModule,
     MatStepperModule,
     ReactiveFormsModule,
-
+    MatDialogModule,
   ],
   bootstrap: [AppComponent]
 })

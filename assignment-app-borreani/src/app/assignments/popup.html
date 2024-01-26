@@ -1,0 +1,44 @@
+<div style="
+  min-height: 400px;
+  min-width: 800px;
+  padding: 100px;
+  ">
+   <div style="
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+ ">
+  <img  [src]="data.imageUtility[data.assignment.prof] "
+   alt="Image du professeur"
+   style="
+   height: 120px;
+   width: 120px;
+   align-self:center;
+   border: 2px solid;
+   border-radius: 100%;
+   "
+   >
+   </div>
+  <h1>{{data.assignment.nom}}</h1>
+
+  <b>Professeur : </b>  {{fonction(data.assignment.prof)}} <br>
+  <b>Auteur : </b>  {{fonction(data.assignment.auteur)}} <br>
+
+  <b>Date de rendu : </b>  {{fonction(data.assignment.dateDeRendu)}} <br>
+  <b>Remarques : </b>  {{fonction(data.assignment.remarques)}} <br>
+  <b>Note : </b>  {{fonction(data.assignment.note)}} <br>
+  <b>Matière : </b>  {{fonction(data.assignment.matiere)}} <br>
+  <b>Rendu : </b>  {{fonction(data.assignment.rendu)}} <br>
+
+  <div style="
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  ">
+    <button mat-raised-button mat-dialog-close  color="primary" cdkFocusInitial style="align-self:center;   position: absolute;   bottom: 30px;">Revenir à la page</button>
+  </div>
+</div>
+

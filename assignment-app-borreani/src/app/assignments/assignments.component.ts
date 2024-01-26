@@ -1,10 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { Assignment } from './assignment.model';
+import { Component, OnInit,Inject } from '@angular/core';
+import { Assignment, Prof, ProfImages } from './assignment.model';
 import { AssignmentsService } from '../shared/assignments.service';
 import { PageEvent } from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogTitle,
+  MatDialogContent,
+} from '@angular/material/dialog';
 
+
+
+export interface DialogData {
+  assignment: Assignment;
+  imageUtility: any;
+}
 
 @Component({
   selector: 'app-assignments',
@@ -13,7 +28,7 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class AssignmentsComponent implements OnInit {
 
-
+  
   //variables pour pagination
   page:number=1;
   limit:number=10;
@@ -35,10 +50,16 @@ export class AssignmentsComponent implements OnInit {
   // Recherche 
   recherche: String = "";
 
-  constructor(private assignmentService:AssignmentsService){
+  constructor(private assignmentService:AssignmentsService, public dialog: MatDialog){
     }
 
-
+    openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+      this.dialog.open(popup, {
+        enterAnimationDuration,
+        exitAnimationDuration,
+        data: {assignment:this.assignmentSelectionne,imageUtility: ProfImages},
+      });
+    }   
 
   ngOnInit(): void {
     this.assignmentService.getAssignmentsPagine(this.page, this.limit, this.choice, this.recherche).subscribe(
@@ -81,6 +102,7 @@ export class AssignmentsComponent implements OnInit {
 
   function(assignment: Assignment){
     this.assignmentSelectionne = assignment;
+    this.openDialog("ddd","ddd");
   }
 
 
@@ -104,4 +126,29 @@ export class AssignmentsComponent implements OnInit {
 
 
 
+}
+
+@Component({
+  selector: 'popup',
+  templateUrl: 'popup.html',
+  standalone: true,
+  imports: [MatButtonModule, MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
+})
+
+
+export class popup {
+  fonction(params: any): string {
+    if (params == null) {
+      return "champ vide";
+    } else {
+      return params;
+    }
+  }
+  constructor(
+    public dialogRef: MatDialogRef<popup>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    ) {
+
+
+  }
 }
