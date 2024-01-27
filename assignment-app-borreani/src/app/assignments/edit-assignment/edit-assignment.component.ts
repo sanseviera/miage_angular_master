@@ -55,5 +55,9 @@ export class EditAssignmentComponent implements OnInit{
     return this.authService.admin; 
   }
 
+  isLogged(){
+    return this.authService.isLogged; 
+  }
+
   
 }

@@ -4,14 +4,14 @@
             <ng-template matStepLabel>Informations de base</ng-template>
             <mat-form-field>
                 <input matInput 
-                    [disabled]="!isAdmin()" 
+                    [disabled]="!isLogged()" 
                     placeholder="Nom de l'assignment"
                     formControlName="nom"
                     [(ngModel)]="nomDevoir">
             </mat-form-field>
             <mat-form-field>
                 <input matInput [matDatepicker]="picker"
-                    [disabled]="!isAdmin()"
+                    [disabled]="!isLogged()"
                     [(ngModel)]="dateRendu"
                     placeholder="Date de rendu"
                     formControlName="dateDeRendu"
@@ -32,7 +32,7 @@
             <ng-template matStepLabel>Informations supplémentaires</ng-template>
             <mat-form-field>
                 <input matInput 
-                    [disabled]="!isAdmin()" 
+                    [disabled]="!isLogged()" 
                     placeholder="Auteur"
                     formControlName="auteur"
                     [(ngModel)]="auteur">
@@ -67,7 +67,7 @@
             <ng-template matStepLabel>Remarques et note</ng-template>
             <mat-form-field>
                 <input matInput 
-                    [disabled]="!isAdmin()" 
+                    [disabled]="!isLogged()" 
                     placeholder="Note sur 20"
                     formControlName="note"
                     [(ngModel)]="note">
@@ -75,7 +75,7 @@
             </mat-form-field>
             <mat-form-field>
                 <textarea matInput 
-                    [disabled]="!isAdmin()"     
+                    [disabled]="!isLogged()"     
                     placeholder="Remarques sur l'assignment"
                     formControlName="remarques"
                     [(ngModel)]="remarques">
@@ -94,7 +94,7 @@
         <div>
             <button mat-button matStepperPrevious>Précédent</button>
             <button mat-flat-button 
-                [disabled]="!isAdmin()"
+                [disabled]="!isLogged()"
                 color="primary" 
                 (click)="onSubmit($event);stepper.reset()">
                 Ajouter un devoir

@@ -4,7 +4,7 @@
         <!-- Date de rendu -->
         <mat-form-field>
             <input matInput [matDatepicker]="picker"
-                [disabled]="!isAdmin()"
+                [disabled]="!isLogged()"
                 [(ngModel)]="assignment.dateDeRendu"
                 placeholder="Date de rendu"
                 name="date">
@@ -15,7 +15,7 @@
         <!-- Nom du devoir -->
         <mat-form-field>
             <input matInput 
-                [disabled]="!isAdmin()"     
+                [disabled]="!isLogged()"     
                 placeholder="Nom du devoir"
                 [(ngModel)]="assignment.nom"
                 name="nom">
@@ -24,7 +24,7 @@
         <!-- Auteur -->
         <mat-form-field>
             <input matInput 
-                [disabled]="!isAdmin()"     
+                [disabled]="!isLogged()"     
                 placeholder="Auteur"
                 [(ngModel)]="assignment.auteur"
                 name="auteur">
@@ -33,7 +33,7 @@
         <!-- Prof -->
         <mat-form-field>
             <mat-select 
-                [disabled]="!isAdmin()" 
+                [disabled]="!isLogged()" 
                 [(ngModel)]="assignment.prof"
                 name="prof">
                 <mat-option *ngFor="let prof of profs" [value]="prof">
@@ -45,7 +45,7 @@
         <!-- Matière -->
         <mat-form-field>
             <mat-select 
-                [disabled]="!isAdmin()" 
+                [disabled]="!isLogged()" 
                 [(ngModel)]="assignment.matiere"
                 name="matiere">
                 <mat-option *ngFor="let matiere of matieres" [value]="matiere">
@@ -57,7 +57,7 @@
         <!-- Remarques -->
         <mat-form-field>
             <textarea matInput 
-                [disabled]="!isAdmin()"     
+                [disabled]="!isLogged()"     
                 placeholder="Remarques sur l'assignment"
                 [(ngModel)]="assignment.remarques"
                 name="remarques">
@@ -67,17 +67,17 @@
         <!-- Note -->
         <mat-form-field>
             <input matInput 
-                [disabled]="!isAdmin()"     
+                [disabled]="!isLogged()"     
                 placeholder="Note sur 20"
                 [(ngModel)]="assignment.note"
                 name="note">
         </mat-form-field>
 
         <button mat-flat-button 
-            [disabled]="!isAdmin()"
+            [disabled]="!isLogged()"
             color="primary" 
             (click)="onSaveAssignment($event)">
-            Ajouter un devoir
+            Modifier le devoir
         </button>
     </form>
 </div>
