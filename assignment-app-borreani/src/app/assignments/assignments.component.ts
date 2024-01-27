@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit,Inject, Input, NgModule } from '@angular/core';
 import { Assignment, MatiereImages, Prof, ProfImages } from './assignment.model';
 import { AssignmentsService } from '../shared/assignments.service';
 import { PageEvent } from '@angular/material/paginator';
@@ -15,7 +15,6 @@ import {
 } from '@angular/material/dialog';
 
 
-
 export interface DialogData {
   assignment: Assignment;
   imageUtility: any;
@@ -29,8 +28,6 @@ export interface DialogData {
 })
 
 export class AssignmentsComponent implements OnInit {
-
-  
   //variables pour pagination
   page:number=1;
   limit:number=10;
@@ -47,7 +44,7 @@ export class AssignmentsComponent implements OnInit {
   pageEvent!: PageEvent;
   // varianles pour les filtres, recherches, etc.
   // Selection
-  choice: string = "rendu et non rendu";
+   choice: string = "rendu et non rendu";
   choices: string[] = ['rendu', 'non rendu', 'rendu et non rendu'];
   // Recherche 
   recherche: String = "";
@@ -101,13 +98,6 @@ export class AssignmentsComponent implements OnInit {
   }
 
 
-  getAssignments(){
-    this.assignmentService.getAssignments()
-        .subscribe((tableauAssignments)=>{
-          this.assignments = tableauAssignments
-        })
-  }
-
   function(assignment: Assignment){
     this.assignmentSelectionne = assignment;
     this.openDialog("ddd","ddd");
@@ -127,10 +117,6 @@ export class AssignmentsComponent implements OnInit {
 
   filterValue: boolean | null = null;
 
-  applyFilter() {
-    this.filterValue = false;
-    this.assignments= this.assignments.filter((e)=>{return e.rendu==false});
-  }
 
   f10(assignment:Assignment){
     return this.imageUtility[assignment.prof]

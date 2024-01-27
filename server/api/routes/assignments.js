@@ -30,7 +30,8 @@ function getAssignment(req, res){
 
 function getAssignments(req, res){
     var aggregateQuery = Assignment.aggregate();
-    var tmp = req.query.recherche + "[a-zA-Z0-9]*";
+    console.log(req.query.recherche);
+    var tmp = "^" + req.query.recherche + "[A-Za-z0-9.]*";
 
     // recherche
     aggregateQuery.match({ nom: { $regex:tmp}});
