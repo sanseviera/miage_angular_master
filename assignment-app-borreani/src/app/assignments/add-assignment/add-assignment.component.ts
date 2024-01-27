@@ -28,6 +28,7 @@ export class AddAssignmentComponent implements OnInit{
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
   thirdFormGroup!: FormGroup;
+  newAssignment!:Assignment;
 
   constructor(private assignmentService:AssignmentsService, 
     private router:Router,
@@ -52,19 +53,19 @@ export class AddAssignmentComponent implements OnInit{
 
   onSubmit(event:Event){
     event.preventDefault();
-    const newAssignment = new Assignment();
-    newAssignment.id= this.assignmentService.getNewId();
-    newAssignment.nom = this.nomDevoir;
-    newAssignment.dateDeRendu = this.dateRendu;
-    newAssignment.rendu = false;
-    newAssignment.auteur = this.auteur;
-    newAssignment.matiere = this.matiere; // set the matiere
-    newAssignment.prof = this.prof; // set the prof
-    newAssignment.note = this.note; // set the note
-    newAssignment.remarques = this.remarques; // set the remarques
+    this.newAssignment = new Assignment();
+    this.newAssignment.id= this.assignmentService.getNewId();
+    this.newAssignment.nom = this.nomDevoir;
+    this.newAssignment.dateDeRendu = this.dateRendu;
+    this.newAssignment.rendu = false;
+    this.newAssignment.auteur = this.auteur;
+    this.newAssignment.matiere = this.matiere; // set the matiere
+    this.newAssignment.prof = this.prof; // set the prof
+    this.newAssignment.note = this.note; // set the note
+    this.newAssignment.remarques = this.remarques; // set the remarques
 
 
-    this.assignmentService.addAssignment(newAssignment)
+    this.assignmentService.addAssignment(this.newAssignment)
       .subscribe((message)=>console.log(message)) 
     
     // Si dessous on navigue
