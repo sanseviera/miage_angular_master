@@ -19,6 +19,7 @@ import {
 export interface DialogData {
   assignment: Assignment;
   imageUtility: any;
+  imageUtility2: any;
 }
 
 @Component({
@@ -60,7 +61,7 @@ export class AssignmentsComponent implements OnInit {
       this.dialog.open(popup, {
         enterAnimationDuration,
         exitAnimationDuration,
-        data: {assignment:this.assignmentSelectionne,imageUtility: ProfImages},
+        data: {assignment:this.assignmentSelectionne,imageUtility: ProfImages,imageUtility2: MatiereImages},
       });
     }   
 

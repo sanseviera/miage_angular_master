@@ -6,17 +6,30 @@
    <div style="
    width: 100%;
    display: flex;
-   flex-direction: column;
+   justify-content: center; 
+   flex-direction: row;
    justify-content: space-between;
+   align-items: center;
  ">
   <img  [src]="data.imageUtility[data.assignment.prof] "
    alt="Image du professeur"
    style="
    height: 120px;
    width: 120px;
-   align-self:center;
    border: 2px solid;
    border-radius: 100%;
+   margin: auto;
+   "
+   >
+
+   <img  [src]="data.imageUtility2[data.assignment.matiere] "
+   alt="Image de la matiere"
+   style="
+   height: 120px;
+   width: 120px;
+   border: 2px solid;
+   border-radius: 100%;
+   margin: auto;
    "
    >
    </div>
