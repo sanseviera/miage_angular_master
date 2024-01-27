@@ -1,5 +1,5 @@
 import { Component, OnInit,Inject } from '@angular/core';
-import { Assignment, Prof, ProfImages } from './assignment.model';
+import { Assignment, MatiereImages, Prof, ProfImages } from './assignment.model';
 import { AssignmentsService } from '../shared/assignments.service';
 import { PageEvent } from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
@@ -49,6 +49,9 @@ export class AssignmentsComponent implements OnInit {
   choices: string[] = ['rendu', 'non rendu', 'rendu et non rendu'];
   // Recherche 
   recherche: String = "";
+  imageUtility: any =ProfImages;
+  imageUtility2: any =MatiereImages;
+
 
   constructor(private assignmentService:AssignmentsService, public dialog: MatDialog){
     }
@@ -124,6 +127,13 @@ export class AssignmentsComponent implements OnInit {
     this.assignments= this.assignments.filter((e)=>{return e.rendu==false});
   }
 
+  f10(assignment:Assignment){
+    return this.imageUtility[assignment.prof]
+  }
+
+  f12(assignment:Assignment){
+    return this.imageUtility2[assignment.matiere]
+  }
 
 
 }

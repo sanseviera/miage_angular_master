@@ -1,7 +1,7 @@
 export enum Matiere {
-    BASE_DE_DONNEES = 'Base de données',
-    TECHNOLOGIES_WEB = 'Technologies Web',
-    GRAILS = 'Grails',
+    GEOMETRIE = 'Geometrie',
+    MATH = 'Mathématiques',
+    LITTERATURE = 'LITTERATURE',
     // Ajoutez d'autres matières ici
 }
 
@@ -13,9 +13,9 @@ export enum Prof {
 }
 
 export const MatiereImages = {
-    [Matiere.BASE_DE_DONNEES]: 'assets/UCA-Logo-1niveau-RVB-Blanc.png',
-    [Matiere.TECHNOLOGIES_WEB]: 'assets/UCA-Logo-1niveau-RVB-Blanc.png',
-    [Matiere.GRAILS]: 'assets/UCA-Logo-1niveau-RVB-Blanc.png',
+    [Matiere.GEOMETRIE]: 'assets/geometrie.jpg',
+    [Matiere.MATH]: 'assets/math.jpg',
+    [Matiere.LITTERATURE]: 'assets/litterature.jpg',
     // Ajoutez d'autres images de matières ici
 }
 
@@ -37,4 +37,5 @@ export class Assignment {
     prof!: Prof; // Prof
     note?: number; // Note sur 20
     remarques?: String; // Remarques sur l'assignment
+  static prof: any;
 }
