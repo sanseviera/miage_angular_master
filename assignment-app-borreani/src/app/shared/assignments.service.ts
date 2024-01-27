@@ -42,7 +42,7 @@ export class AssignmentsService {
   }
 
   updateAssignment(assignment:Assignment):Observable<any>{
-    return this.http.post<Assignment>(this.url, assignment);
+    return this.http.put<Assignment>(this.url, assignment);
   }
   
   deleteAssignment(assignment:Assignment):Observable<any>{

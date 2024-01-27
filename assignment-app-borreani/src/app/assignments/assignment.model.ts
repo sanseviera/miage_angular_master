@@ -1,14 +1,14 @@
 export enum Matiere {
     GEOMETRIE = 'Geometrie',
     MATH = 'Mathématiques',
-    LITTERATURE = 'LITTERATURE',
+    LITTERATURE = 'Littérature',
     // Ajoutez d'autres matières ici
 }
 
 export enum Prof {
-    PROF_1 = 'Prof 1',
-    PROF_2 = 'Prof 2',
-    PROF_3 = 'Prof 3',
+    PROF_1 = 'MARTIN Rose',
+    PROF_2 = 'BERNARD Anna',
+    PROF_3 = 'THOMAS Thomas',
     // Ajoutez d'autres profs ici
 }
 

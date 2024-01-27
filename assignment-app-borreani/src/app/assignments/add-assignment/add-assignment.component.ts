@@ -28,7 +28,7 @@ export class AddAssignmentComponent implements OnInit{
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
   thirdFormGroup!: FormGroup;
-  newAssignment!:Assignment;
+  newAssignment:Assignment =new Assignment();
 
   constructor(private assignmentService:AssignmentsService, 
     private router:Router,
@@ -52,8 +52,7 @@ export class AddAssignmentComponent implements OnInit{
   }
 
   onSubmit(event:Event){
-    event.preventDefault();
-    this.newAssignment = new Assignment();
+    //event.preventDefault();
     this.newAssignment.id= this.assignmentService.getNewId();
     this.newAssignment.nom = this.nomDevoir;
     this.newAssignment.dateDeRendu = this.dateRendu;
@@ -65,6 +64,7 @@ export class AddAssignmentComponent implements OnInit{
     this.newAssignment.remarques = this.remarques; // set the remarques
 
 
+    console.log(this.nomDevoir)
     this.assignmentService.addAssignment(this.newAssignment)
       .subscribe((message)=>console.log(message)) 
     
