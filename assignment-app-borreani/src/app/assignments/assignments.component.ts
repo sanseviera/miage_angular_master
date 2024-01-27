@@ -27,6 +27,7 @@ export interface DialogData {
   templateUrl: './assignments.component.html',
   styleUrl: './assignments.component.css'
 })
+
 export class AssignmentsComponent implements OnInit {
 
   
@@ -54,8 +55,11 @@ export class AssignmentsComponent implements OnInit {
   imageUtility2: any =MatiereImages;
 
 
-  constructor(private assignmentService:AssignmentsService, public dialog: MatDialog){
-    }
+  constructor(
+    private assignmentService: AssignmentsService,
+    public dialog: MatDialog,
+    
+  ) { }
 
     openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
       this.dialog.open(popup, {
@@ -148,6 +152,12 @@ export class AssignmentsComponent implements OnInit {
 
 
 export class popup {
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    public dialogRef: MatDialogRef<popup>
+  ){}
+
   fonction(params: any): string {
     if (params == null) {
       return "champ vide";
@@ -155,11 +165,8 @@ export class popup {
       return params;
     }
   }
-  constructor(
-    public dialogRef: MatDialogRef<popup>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    ) {
+  
 
 
-  }
+  
 }

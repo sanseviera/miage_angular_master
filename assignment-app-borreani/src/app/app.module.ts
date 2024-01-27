@@ -37,7 +37,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatSelectModule } from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio'; 
-
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 import {MatStepperModule} from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog'; 
@@ -113,6 +113,7 @@ const routes:Routes = [
     MatStepperModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatSnackBarModule,
   ],
   bootstrap: [AppComponent]
 })
