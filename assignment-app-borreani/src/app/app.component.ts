@@ -14,7 +14,7 @@ import * as loremIpsum from 'lorem-ipsum';
 })
 export class AppComponent {
   title = 'Application de gestion des devoirs (Assignments)';
-  noms = "BORREANI Théo";
+  noms = "BORREANI Théo et BREZZO Jérémie";
   mdp:string="";
   nom:string="";
   opened = false;

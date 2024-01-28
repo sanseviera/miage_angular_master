@@ -15,6 +15,7 @@ import {
 } from '@angular/material/dialog';
 
 
+
 export interface DialogData {
   assignment: Assignment;
   imageUtility: any;
@@ -139,16 +140,29 @@ export class AssignmentsComponent implements OnInit {
 
 export class popup {
 
+  maDate: Date = new Date();
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    public dialogRef: MatDialogRef<popup>
+    public dialogRef: MatDialogRef<popup>,
   ){}
 
   fonction(params: any): string {
     if (params == null) {
       return "champ vide";
     } else {
-      return params;
+      
+      return  params;
+    }
+  }
+
+  fonction2(params: any): string {
+    if (params == null) {
+      return "champ vide";
+    } else {
+      const date = new Date(params);
+      
+      return  date.getDay().toString() + "/" + date.getMonth().toString() + "/" + date.getFullYear().toString();
     }
   }
   

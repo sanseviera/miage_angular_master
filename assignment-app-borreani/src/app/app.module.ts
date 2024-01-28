@@ -41,6 +41,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog'; 
+import { DatePipe } from '@angular/common';
 const routes:Routes = [
   { 
     path:'', 
@@ -114,6 +115,8 @@ const routes:Routes = [
     ReactiveFormsModule,
     MatDialogModule,
     MatSnackBarModule,
+    DatePipe,
+
   ],
   bootstrap: [AppComponent]
 })
