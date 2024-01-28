@@ -1,50 +1,50 @@
-
-
-
-
-
 <div class="container">
     <mat-card *ngIf="assignmentTransmis">
+        <div class="test-container">
         <mat-card-title>
-            {{assignmentTransmis.nom}}
+            Titre : {{assignmentTransmis.nom}}
         </mat-card-title>
         <mat-card-subtitle>
             {{assignmentTransmis.dateDeRendu|date}}
         </mat-card-subtitle>
 
+        <h4>Auteur: {{assignmentTransmis.auteur}}</h4>
+        </div>
+
         <div class="flex-container">
-            <div>
-                <h3>Auteur: {{assignmentTransmis.auteur}}</h3>
+            <div class="flex-item">
                 <h3>Matière: {{assignmentTransmis.matiere}}</h3>
-            <br>
-                <img class="matiere-image" [src]="MatiereImages[assignmentTransmis.matiere]" alt="Image de la matière" >
+                <img class="matiere-image" [src]="MatiereImages[assignmentTransmis.matiere]" alt="Image de la matière">
             </div>
-            <div>
+            <div class="flex-item">
                 <h3>Professeur: {{assignmentTransmis.prof}}</h3>
-                <br>
-                <img class="prof-image" [src]="ProfImages[assignmentTransmis.prof]" alt="Image du professeur" >
+                <img class="prof-image" [src]="ProfImages[assignmentTransmis.prof]" alt="Image du professeur">
             </div>
         </div>
 
+        <div class="subtile-card-container">
         <mat-card-subtitle>
             Note: {{assignmentTransmis.note}}
         </mat-card-subtitle>
         <mat-card-subtitle>
             Remarques: {{assignmentTransmis.remarques}}
         </mat-card-subtitle>
+        </div>
 
-
-        <mat-checkbox [disabled]="!isLogged() "  *ngIf="!assignmentTransmis.rendu &&  !(assignmentTransmis.note==null || assignmentTransmis.note == undefined) " (click)="onAssignmentRendu()">
+        <div class="checkbox-container">
+        <mat-checkbox class="checkbox" [disabled]="!isLogged()" *ngIf="!assignmentTransmis.rendu && !(assignmentTransmis.note==null || assignmentTransmis.note == undefined)" (click)="onAssignmentRendu()">
             Devoir rendu
         </mat-checkbox>
-        <button [disabled]="!isAdmin()" mat-flat-button color="accent" (click)="onDeleteAssignmentBtnClick()">
-            Supprimer devoir
-        </button>
-        <button  [disabled]="!isLogged()" color="primary" (click)="onClickEdit()">
-            Modifier devoir
-        </button>
-        
+        </div>
 
-        
-           </mat-card>
+        <div class="button-container">
+     
+            <button [disabled]="!isAdmin()" mat-flat-button color="accent" (click)="onDeleteAssignmentBtnClick()">
+                Supprimer devoir
+            </button>
+            <button  [disabled]="!isLogged()" color="primary" (click)="onClickEdit()">
+                Modifier devoir
+            </button>
+        </div>
+    </mat-card>
 </div>
