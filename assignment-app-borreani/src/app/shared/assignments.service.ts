@@ -10,7 +10,7 @@ import { map, filter } from 'rxjs/operators';
 })
 export class AssignmentsService {
 
-  url = "http://borreani.fr:1234/api/assignments";
+  url = "https://angular-server-p26v.onrender.com/api/assignments";
   constructor(private loggingService:LoggingService,private http:HttpClient ) { }
 
 
