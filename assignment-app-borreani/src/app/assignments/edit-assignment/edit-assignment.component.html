@@ -1,4 +1,8 @@
-<div class="container" *ngIf="assignment">
+<div class="container" *ngIf="assignment" style="display: flex;
+align-items: center;
+justify-content: center;
+">
+<div class="container" *ngIf="assignment" style="max-width: 800px;">
     <h1>Edition du devoir {{assignment.nom}}</h1>
     <form ngForm class="form">
         <!-- Date de rendu -->
@@ -80,4 +84,5 @@
             Modifier le devoir
         </button>
     </form>
+</div>
 </div>

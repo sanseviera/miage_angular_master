@@ -16,11 +16,13 @@
             <div>
                 <h3>Auteur: {{assignmentTransmis.auteur}}</h3>
                 <h3>Matière: {{assignmentTransmis.matiere}}</h3>
-                <img class="matiere-image" [src]="MatiereImages[assignmentTransmis.matiere]" alt="Image de la matière">
+            <br>
+                <img class="matiere-image" [src]="MatiereImages[assignmentTransmis.matiere]" alt="Image de la matière" >
             </div>
             <div>
                 <h3>Professeur: {{assignmentTransmis.prof}}</h3>
-                <img class="prof-image" [src]="ProfImages[assignmentTransmis.prof]" alt="Image du professeur">
+                <br>
+                <img class="prof-image" [src]="ProfImages[assignmentTransmis.prof]" alt="Image du professeur" >
             </div>
         </div>
 
@@ -32,7 +34,7 @@
         </mat-card-subtitle>
 
 
-        <mat-checkbox [disabled]="!isAdmin()"  *ngIf="!assignmentTransmis.rendu" (click)="onAssignmentRendu()">
+        <mat-checkbox [disabled]="!isLogged() "  *ngIf="!assignmentTransmis.rendu &&  !(assignmentTransmis.note==null || assignmentTransmis.note == undefined) " (click)="onAssignmentRendu()">
             Devoir rendu
         </mat-checkbox>
         <button [disabled]="!isAdmin()" mat-flat-button color="accent" (click)="onDeleteAssignmentBtnClick()">
