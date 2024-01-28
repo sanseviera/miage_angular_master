@@ -10,7 +10,7 @@ import { map, filter } from 'rxjs/operators';
 })
 export class AssignmentsService {
 
-  url = "http://localhost:8010/api/assignments";
+  url = "http://borreani.fr:1234/api/assignments";
   constructor(private loggingService:LoggingService,private http:HttpClient ) { }
 
 
