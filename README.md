@@ -31,7 +31,7 @@ https://www.youtube.com/watch?v=rcy8KBR8c9o
 - [X] Affichage avec "table" d' Angular avec toutes les différentes contraintes proposé comme la pagination,datasource, etc.
 - [X] L'ajout de la nouvelle vue détaille .
 - [X] L'ajout du filtre rendu/non rendu.
-- [X] L'ajout du champ de recherche.
+- [X] L'ajout du champ de recherche qui utilise une regex nous permettant ainsi de selectionner tous les devoirs qui posséde le même suffixe.
 - [X] L'ajout du formulaire de type Stepper.
 
 ## En plus
